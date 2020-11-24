@@ -41,7 +41,7 @@ public class PersonServiceTest {
 	@Tag("PersonServiceTest")
 	@Test
 	public void httpPostIfPersonIsNull() {
-		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> personService.httpPost(null));
+		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> personService.httpPostPerson(null));
 		verify(personDAO, never()).addNewPerson(any(Person.class));
 	}
 
@@ -49,7 +49,7 @@ public class PersonServiceTest {
 	@Test
 	void httpPostIfDAOIstrue() {
 		when(personDAO.addNewPerson(person)).thenReturn(true);
-		assertThat(personService.httpPost(person)).isEqualTo("Person added");
+		assertThat(personService.httpPostPerson(person)).isEqualTo("Person added");
 		verify(personDAO, times(1)).addNewPerson(person);
 	}
 
@@ -57,14 +57,14 @@ public class PersonServiceTest {
 	@Test
 	void httpPostIfDAOIsfalse() {
 		when(personDAO.addNewPerson(person)).thenReturn(false);
-		assertThat(personService.httpPost(person)).isEqualTo("Error : This Person can't be added");
+		assertThat(personService.httpPostPerson(person)).isEqualTo("Error : This Person can't be added");
 		verify(personDAO, times(1)).addNewPerson(person);
 	}
 
 	@Tag("PersonServiceTest")
 	@Test
 	void httpPutIfPersonIsNull() {
-		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> personService.httpPut(null));
+		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> personService.httpPutPerson(null));
 		verify(personDAO, never()).updatePerson(any(Person.class));
 	}
 
@@ -72,7 +72,7 @@ public class PersonServiceTest {
 	@Test
 	void httpPutIfDAOIstrue() {
 		when(personDAO.updatePerson(person)).thenReturn(true);
-		assertThat(personService.httpPut(person)).isEqualTo("Person updated");
+		assertThat(personService.httpPutPerson(person)).isEqualTo("Person updated");
 		verify(personDAO, times(1)).updatePerson(person);
 	}
 
@@ -80,7 +80,7 @@ public class PersonServiceTest {
 	@Test
 	void httpPutIfDAOIsfalse() {
 		when(personDAO.updatePerson(person)).thenReturn(false);
-		assertThat(personService.httpPut(person)).isEqualTo("Error : This Person hasn't been updated");
+		assertThat(personService.httpPutPerson(person)).isEqualTo("Error : This Person hasn't been updated");
 		verify(personDAO, times(1)).updatePerson(person);
 	}
 
@@ -89,7 +89,7 @@ public class PersonServiceTest {
 	void httpDeletePersonDAOIsTrueAndmedicalRecordDAOIsTrue() {
 		when(personDAO.deletePerson(0)).thenReturn(true);
 		when(medicalRecordDAO.deleteMedicalRecord(0)).thenReturn(true);
-		assertThat(personService.httpDelete(0)).isEqualTo("Medical record deleted / Person deleted");
+		assertThat(personService.httpDeletePerson(0)).isEqualTo("Medical record deleted / Person deleted");
 		verify(personDAO, times(1)).deletePerson(0);
 		verify(medicalRecordDAO, times(1)).deleteMedicalRecord(0);
 	}
@@ -99,7 +99,7 @@ public class PersonServiceTest {
 	void httpDeletePersonDAOIsTrueAndmedicalRecordDAOIsfalse() {
 		when(personDAO.deletePerson(0)).thenReturn(true);
 		when(medicalRecordDAO.deleteMedicalRecord(0)).thenReturn(false);
-		assertThat(personService.httpDelete(0))
+		assertThat(personService.httpDeletePerson(0))
 				.isEqualTo("Error : The medical record of this person hasn't be deleted / Person deleted");
 		verify(personDAO, times(1)).deletePerson(0);
 		verify(medicalRecordDAO, times(1)).deleteMedicalRecord(0);
@@ -110,7 +110,7 @@ public class PersonServiceTest {
 	void httpDeletePersonDAOIsFalseAndMedicalRecordDAOIstrue() {
 		when(personDAO.deletePerson(0)).thenReturn(false);
 		when(medicalRecordDAO.deleteMedicalRecord(0)).thenReturn(true);
-		assertThat(personService.httpDelete(0))
+		assertThat(personService.httpDeletePerson(0))
 				.isEqualTo("Medical record deleted / Error : This Person hasn't been deleted");
 		verify(personDAO, times(1)).deletePerson(0);
 		verify(medicalRecordDAO, times(1)).deleteMedicalRecord(0);
@@ -121,7 +121,7 @@ public class PersonServiceTest {
 	void httpDeletePersonDAOIsFalseAndMedicalRecordDAOIsFalse() {
 		when(personDAO.deletePerson(0)).thenReturn(false);
 		when(medicalRecordDAO.deleteMedicalRecord(0)).thenReturn(false);
-		assertThat(personService.httpDelete(0)).isEqualTo(
+		assertThat(personService.httpDeletePerson(0)).isEqualTo(
 				"Error : The medical record of this person hasn't be deleted / Error : This Person hasn't been deleted");
 		verify(personDAO, times(1)).deletePerson(0);
 		verify(medicalRecordDAO, times(1)).deleteMedicalRecord(0);
