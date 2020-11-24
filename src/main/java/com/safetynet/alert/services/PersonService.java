@@ -21,7 +21,7 @@ public class PersonService implements IPersonService {
 	}
 
 	@Override
-	public String httpPost(Person newPerson) {
+	public String httpPostPerson(Person newPerson) {
 		if (newPerson != null) {
 			newPerson.setId(personDAO.getAllPersons().size() + 1);
 			if (personDAO.addNewPerson(newPerson)) {
@@ -37,7 +37,7 @@ public class PersonService implements IPersonService {
 	}
 
 	@Override
-	public String httpPut(Person person) {
+	public String httpPutPerson(Person person) {
 		if (person != null) {
 			if (personDAO.updatePerson(person)) {
 				LOGGER.info("Person profile n°" + person.getId() + " has been updated");
@@ -51,7 +51,7 @@ public class PersonService implements IPersonService {
 	}
 
 	@Override
-	public String httpDelete(Integer id) {
+	public String httpDeletePerson(Integer id) {
 		String resultMsg;
 		if (medicalRecordDAO.deleteMedicalRecord(id)) {
 			LOGGER.info("The medical record of person n°" + id + " has been deleted");
