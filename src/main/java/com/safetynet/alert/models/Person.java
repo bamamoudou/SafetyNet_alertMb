@@ -10,15 +10,12 @@ public class Person {
 	private String phone;
 	private String email;
 
-	/**
-	 * Auto-increment index to set unique id
-	 */
-	public static int index = 0;
+	
 
-	public Person(String firstName, String lastName, String address, String city, String zip, String phone,
+	public Person(Integer id, String firstName, String lastName, String address, String city, String zip, String phone,
 			String email) {
 		super();
-		this.id = index++;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -27,6 +24,7 @@ public class Person {
 		this.phone = phone;
 		this.email = email;
 	}
+	
 
 	public Integer getId() {
 		return id;
