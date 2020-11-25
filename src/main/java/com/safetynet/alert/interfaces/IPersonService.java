@@ -8,20 +8,20 @@ public interface IPersonService {
 	 * 
 	 * @param person
 	 */
-	String httpPostPerson(Person person);
+	public String httpPostPerson(Person person);
 
 	/**
 	 * Update person from HTTP PUT
 	 * 
 	 * @param person
 	 */
-	String httpPutPerson(Person person);
+	public String httpPutPerson(Person person);
 
 	/**
 	 * Delete person from HTTP DELETE
 	 * 
 	 * @param id
 	 */
-	String httpDeletePerson(Integer id);
+	public String httpDeletePerson(Integer id);
 
 }
