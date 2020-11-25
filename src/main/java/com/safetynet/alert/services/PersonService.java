@@ -1,5 +1,7 @@
 package com.safetynet.alert.services;
 
+import javax.inject.Singleton;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,6 +10,7 @@ import com.safetynet.alert.DAO.PersonDAO;
 import com.safetynet.alert.interfaces.IPersonService;
 import com.safetynet.alert.models.Person;
 
+@Singleton
 public class PersonService implements IPersonService {
 
 	private static final Logger LOGGER = LogManager.getLogger("PersonService");
