@@ -53,7 +53,7 @@ public interface IInformationService {
 	 * @param stationNumbers
 	 * @return String in JSON format
 	 */
-	String getAllPersonsServedByTheStations(String stationNumbers);
+	String getAllPersonsServedByTheStations(String firestation);
 
 	/**
 	 * Get all phones of persons by station location
