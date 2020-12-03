@@ -2,14 +2,13 @@ package com.safetynet.alert.DAO;
 
 import java.util.List;
 
-import com.safetynet.alert.configation.DatabaseConfig;
-import com.safetynet.alert.interfaces.IPersonDAO;
+import com.safetynet.alert.configation.DatabaseConfigImpl;
 import com.safetynet.alert.models.Person;
 
-public class PersonDAO implements IPersonDAO{
+public class PersonDAOImpl implements IPersonDAO{
 	
 	@Override
-	public void setDatabaseConfig(DatabaseConfig dataBaseConfig) {
+	public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig) {
 		
 	}
 	

@@ -8,15 +8,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONValue;
 
-import com.safetynet.alert.DAO.FirestationDAO;
-import com.safetynet.alert.DAO.MedicalRecordDAO;
-import com.safetynet.alert.DAO.PersonDAO;
-import com.safetynet.alert.interfaces.IInformationService;
+import com.safetynet.alert.DAO.FirestationDAOImpl;
+import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.PersonDAOImpl;
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.models.Person;
 
-public class InformationService implements IInformationService {
+public class InformationServiceImpl implements IInformationService {
 
 	/**
 	 * Logger
@@ -26,19 +25,19 @@ public class InformationService implements IInformationService {
 	/**
 	 * Persons Profiles
 	 */
-	private PersonDAO personDAO;
+	private PersonDAOImpl personDAO;
 
 	/**
 	 * Fire station information
 	 */
-	private FirestationDAO stationDAO;
+	private FirestationDAOImpl stationDAO;
 
 	/**
 	 * Persons medical records
 	 */
-	private MedicalRecordDAO medicalRecordDAO;
+	private MedicalRecordDAOImpl medicalRecordDAO;
 
-	public InformationService(PersonDAO personDAO, FirestationDAO stationDAO, MedicalRecordDAO medicalRecordDAO) {
+	public InformationServiceImpl(PersonDAOImpl personDAO, FirestationDAOImpl stationDAO, MedicalRecordDAOImpl medicalRecordDAO) {
 		super();
 		this.personDAO = personDAO;
 		this.stationDAO = stationDAO;

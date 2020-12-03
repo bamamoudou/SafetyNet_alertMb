@@ -18,23 +18,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.MedicalRecordDAO;
+import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
 import com.safetynet.alert.models.MedicalRecord;
-import com.safetynet.alert.services.MedicalRecordService;
+import com.safetynet.alert.services.MedicalRecordServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class MedicalRecordServiceTest {
 
 	private MedicalRecord medicalRecord;
-	private MedicalRecordService medicalRecordsService;
+	private MedicalRecordServiceImpl medicalRecordsService;
 
 	@Mock
-	private static MedicalRecordDAO medicalRecordDAO;
+	private static MedicalRecordDAOImpl medicalRecordDAO;
 
 	@BeforeEach
 	void setUp() {
 		medicalRecord = new MedicalRecord(0, "", new ArrayList<>(), new ArrayList<>());
-		medicalRecordsService = new MedicalRecordService(medicalRecordDAO);
+		medicalRecordsService = new MedicalRecordServiceImpl(medicalRecordDAO);
 	}
 
 	@Tag("MedicalRecordsService")

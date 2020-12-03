@@ -2,14 +2,13 @@ package com.safetynet.alert.DAO;
 
 import java.util.List;
 
-import com.safetynet.alert.configation.DatabaseConfig;
-import com.safetynet.alert.interfaces.IFireStationDAO;
+import com.safetynet.alert.configation.DatabaseConfigImpl;
 import com.safetynet.alert.models.Firestation;
 
 
-public class FirestationDAO implements IFireStationDAO {
+public class FirestationDAOImpl implements IFireStationDAO {
 
-	public void setDatabaseConfig(DatabaseConfig dataBaseConfig) {
+	public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig) {
 		
 	}
 	

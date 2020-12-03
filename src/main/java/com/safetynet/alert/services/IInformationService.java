@@ -1,4 +1,4 @@
-package com.safetynet.alert.interfaces;
+package com.safetynet.alert.services;
 
 public interface IInformationService {
 	/**

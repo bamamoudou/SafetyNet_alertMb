@@ -1,4 +1,4 @@
-package com.safetynet.alert.interfaces;
+package com.safetynet.alert.configation;
 
 import org.json.simple.JSONObject;
 

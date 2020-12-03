@@ -16,26 +16,26 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.MedicalRecordDAO;
-import com.safetynet.alert.DAO.PersonDAO;
+import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.PersonDAOImpl;
 import com.safetynet.alert.models.Person;
-import com.safetynet.alert.services.PersonService;
+import com.safetynet.alert.services.PersonServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
 	private Person person;
-	private PersonService personService;
+	private PersonServiceImpl personService;
 
 	@Mock
-	private static PersonDAO personDAO;
+	private static PersonDAOImpl personDAO;
 
 	@Mock
-	private static MedicalRecordDAO medicalRecordDAO;
+	private static MedicalRecordDAOImpl medicalRecordDAO;
 
 	@BeforeEach
 	void setUp() {
 		person = new Person(0, "", "", "", "", "", "", "");
-		personService = new PersonService(personDAO, medicalRecordDAO);
+		personService = new PersonServiceImpl(personDAO, medicalRecordDAO);
 	}
 
 	@Tag("PersonServiceTest")

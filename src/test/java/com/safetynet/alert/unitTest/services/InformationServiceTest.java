@@ -22,13 +22,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.FirestationDAO;
-import com.safetynet.alert.DAO.MedicalRecordDAO;
-import com.safetynet.alert.DAO.PersonDAO;
+import com.safetynet.alert.DAO.FirestationDAOImpl;
+import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.PersonDAOImpl;
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.models.Person;
-import com.safetynet.alert.services.InformationService;
+import com.safetynet.alert.services.InformationServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class InformationServiceTest {
@@ -37,20 +37,20 @@ public class InformationServiceTest {
 	private List<Firestation> stations;
 	private List<MedicalRecord> medicalRecords;
 	private String data;
-	private InformationService informationService;
+	private InformationServiceImpl informationService;
 
 	@Mock
-	private static PersonDAO personDAO;
+	private static PersonDAOImpl personDAO;
 
 	@Mock
-	private static MedicalRecordDAO medicalRecordDAO;
+	private static MedicalRecordDAOImpl medicalRecordDAO;
 
 	@Mock
-	private static FirestationDAO stationDAO;
+	private static FirestationDAOImpl stationDAO;
 
 	@BeforeEach
 	public void initTest() {
-		informationService = new InformationService(personDAO, stationDAO, medicalRecordDAO);
+		informationService = new InformationServiceImpl(personDAO, stationDAO, medicalRecordDAO);
 
 		persons = new ArrayList<>();
 		persons.add(

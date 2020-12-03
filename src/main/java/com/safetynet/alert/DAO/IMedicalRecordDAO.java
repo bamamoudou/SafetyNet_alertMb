@@ -1,8 +1,8 @@
-package com.safetynet.alert.interfaces;
+package com.safetynet.alert.DAO;
 
 import java.util.List;
 
-import com.safetynet.alert.configation.DatabaseConfig;
+import com.safetynet.alert.configation.DatabaseConfigImpl;
 import com.safetynet.alert.models.MedicalRecord;
 
 public interface IMedicalRecordDAO {
@@ -11,7 +11,7 @@ public interface IMedicalRecordDAO {
     * Set DatabaseConfiguration
     * @param dataBaseConfig
     */
-   public void setDatabaseConfig(DatabaseConfig dataBaseConfig);
+   public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig);
 
 	/**
 	 * Get one medicalRecord from allMedicalRecords choose by person id

@@ -16,24 +16,24 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.FirestationDAO;
+import com.safetynet.alert.DAO.FirestationDAOImpl;
 import com.safetynet.alert.models.Firestation;
-import com.safetynet.alert.services.FirestationService;
+import com.safetynet.alert.services.FirestationServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class FirestationServiceTest {
 
 	private Firestation firestation;
 
-	private FirestationService firestationService;
+	private FirestationServiceImpl firestationService;
 
 	@Mock
-	private static FirestationDAO firestationDAO;
+	private static FirestationDAOImpl firestationDAO;
 
 	@BeforeEach
 	public void setUp() {
 		firestation = new Firestation(0, "");
-		firestationService = new FirestationService(firestationDAO);
+		firestationService = new FirestationServiceImpl(firestationDAO);
 	}
 
 	@Tag("StationServiceTest")

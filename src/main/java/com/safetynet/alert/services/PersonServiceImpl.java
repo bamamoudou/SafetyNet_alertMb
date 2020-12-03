@@ -5,19 +5,18 @@ import javax.inject.Singleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alert.DAO.MedicalRecordDAO;
-import com.safetynet.alert.DAO.PersonDAO;
-import com.safetynet.alert.interfaces.IPersonService;
+import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.PersonDAOImpl;
 import com.safetynet.alert.models.Person;
 
 @Singleton
-public class PersonService implements IPersonService {
+public class PersonServiceImpl implements IPersonService {
 
 	private static final Logger LOGGER = LogManager.getLogger("PersonService");
-	private PersonDAO personDAO;
-	private MedicalRecordDAO medicalRecordDAO;
+	private PersonDAOImpl personDAO;
+	private MedicalRecordDAOImpl medicalRecordDAO;
 
-	public PersonService(PersonDAO personDAO, MedicalRecordDAO medicalRecordDAO) {
+	public PersonServiceImpl(PersonDAOImpl personDAO, MedicalRecordDAOImpl medicalRecordDAO) {
 		super();
 		this.personDAO = personDAO;
 		this.medicalRecordDAO = medicalRecordDAO;

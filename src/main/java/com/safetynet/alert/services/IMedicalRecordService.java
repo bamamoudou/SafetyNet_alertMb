@@ -1,4 +1,4 @@
-package com.safetynet.alert.interfaces;
+package com.safetynet.alert.services;
 
 import com.safetynet.alert.models.MedicalRecord;
 

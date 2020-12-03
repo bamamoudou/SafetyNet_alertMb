@@ -1,8 +1,8 @@
-package com.safetynet.alert.interfaces;
+package com.safetynet.alert.DAO;
 
 import java.util.List;
 
-import com.safetynet.alert.configation.DatabaseConfig;
+import com.safetynet.alert.configation.DatabaseConfigImpl;
 import com.safetynet.alert.models.Firestation;
 
 public interface IFireStationDAO {
@@ -11,7 +11,7 @@ public interface IFireStationDAO {
 	 * 
 	 * @param dataBaseConfig
 	 */
-	public void setDatabaseConfig(DatabaseConfig dataBaseConfig);
+	public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig);
 
 	/**
 	 * Get one station from allStations choose by station number
