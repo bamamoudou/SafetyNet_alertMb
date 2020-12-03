@@ -9,7 +9,7 @@ public interface IDatabaseConfig {
 	 * 
 	 * @return data : JSONObject
 	 */
-	JSONObject openConnection();
+	public JSONObject openConnection();
 
 	/**
 	 * Read data.json and cast it in JSONObject data
@@ -17,18 +17,18 @@ public interface IDatabaseConfig {
 	 * @param filepath
 	 * @return data : JSONObject
 	 */
-	JSONObject openConnection(String filepath);
+	public JSONObject openConnection(String filepath);
 
 	/**
 	 * Getter data
 	 * 
 	 * @return data : JSONObject
 	 */
-	JSONObject getData();
+	public JSONObject getData();
 
 	/**
 	 * Set data as null
 	 */
-	void closeConnection();
+	public void closeConnection();
 
 }
