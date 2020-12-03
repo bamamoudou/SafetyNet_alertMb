@@ -3,6 +3,8 @@ package com.safetynet.alert.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Singleton;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -11,6 +13,7 @@ import org.json.simple.JSONObject;
 import com.safetynet.alert.configation.DatabaseConfigImpl;
 import com.safetynet.alert.models.Person;
 
+@Singleton
 public class PersonDAOImpl implements IPersonDAO {
 	private static final Logger LOGGER = LogManager.getLogger("PersonDAOImpl");
 
