@@ -1,4 +1,4 @@
-package com.safetynet.alert.service.impl;
+package com.safetynet.alert.services.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,4 +1,4 @@
-package com.safetynet.alert.service.impl;
+package com.safetynet.alert.services.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;

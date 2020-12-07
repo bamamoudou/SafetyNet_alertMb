@@ -20,7 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
 import com.safetynet.alert.models.MedicalRecord;
-import com.safetynet.alert.service.impl.MedicalRecordServiceImpl;
+import com.safetynet.alert.services.impl.MedicalRecordServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class MedicalRecordServiceTest {
