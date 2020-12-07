@@ -1,10 +1,11 @@
-package com.safetynet.alert.services;
+package com.safetynet.alert.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alert.DAO.FirestationDAOImpl;
+import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
 import com.safetynet.alert.models.Firestation;
+import com.safetynet.alert.services.IFirestationService;
 
 public class FirestationServiceImpl implements IFirestationService {
 

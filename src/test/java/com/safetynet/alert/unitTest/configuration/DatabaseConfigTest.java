@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import com.safetynet.alert.configation.DatabaseConfigImpl;
+import com.safetynet.alert.configuration.DatabaseConfigImpl;
 
 public class DatabaseConfigTest {
 

@@ -1,4 +1,4 @@
-package com.safetynet.alert.configation;
+package com.safetynet.alert.configuration;
 
 import java.io.FileReader;
 

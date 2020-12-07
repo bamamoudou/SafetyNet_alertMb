@@ -20,8 +20,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.PersonDAOImpl;
-import com.safetynet.alert.configation.DatabaseConfigImpl;
+import com.safetynet.alert.DAO.impl.PersonDAOImpl;
+import com.safetynet.alert.configuration.DatabaseConfigImpl;
 import com.safetynet.alert.models.Person;
 
 @ExtendWith(MockitoExtension.class)

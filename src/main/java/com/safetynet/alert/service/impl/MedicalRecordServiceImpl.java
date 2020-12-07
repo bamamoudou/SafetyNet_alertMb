@@ -1,12 +1,13 @@
-package com.safetynet.alert.services;
+package com.safetynet.alert.service.impl;
 
 import javax.inject.Singleton;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
 import com.safetynet.alert.models.MedicalRecord;
+import com.safetynet.alert.services.IMedicalRecordService;
 
 @Singleton
 public class MedicalRecordServiceImpl implements IMedicalRecordService {

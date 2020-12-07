@@ -1,4 +1,4 @@
-package com.safetynet.alert.DAO;
+package com.safetynet.alert.DAO.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.safetynet.alert.configation.DatabaseConfigImpl;
+import com.safetynet.alert.DAO.IPersonDAO;
+import com.safetynet.alert.configuration.DatabaseConfigImpl;
 import com.safetynet.alert.models.Person;
 
 @Singleton

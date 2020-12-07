@@ -22,13 +22,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.FirestationDAOImpl;
-import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
-import com.safetynet.alert.DAO.PersonDAOImpl;
+import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
+import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.impl.PersonDAOImpl;
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.models.Person;
-import com.safetynet.alert.services.InformationServiceImpl;
+import com.safetynet.alert.service.impl.InformationServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class InformationServiceTest {

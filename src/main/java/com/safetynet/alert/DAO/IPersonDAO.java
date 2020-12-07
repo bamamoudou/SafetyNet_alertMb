@@ -2,7 +2,7 @@ package com.safetynet.alert.DAO;
 
 import java.util.List;
 
-import com.safetynet.alert.configation.DatabaseConfigImpl;
+import com.safetynet.alert.configuration.DatabaseConfigImpl;
 import com.safetynet.alert.models.Person;
 
 public interface IPersonDAO {

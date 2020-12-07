@@ -16,10 +16,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.MedicalRecordDAOImpl;
-import com.safetynet.alert.DAO.PersonDAOImpl;
+import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.impl.PersonDAOImpl;
 import com.safetynet.alert.models.Person;
-import com.safetynet.alert.services.PersonServiceImpl;
+import com.safetynet.alert.service.impl.PersonServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
