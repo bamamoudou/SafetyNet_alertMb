@@ -20,7 +20,7 @@ public class InformationController {
 	}
 
 	@GetMapping("/firestation")
-	public String getFirestation(@RequestParam(required = false) Integer firestationNumber) {
+	public String getMappingFirestation(@RequestParam(required = false) Integer firestationNumber) {
 
 		return informationService.getAllPersonsServedByTheStationWithCount(firestationNumber);
 
