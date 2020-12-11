@@ -26,6 +26,12 @@ public class InformationController {
 
 	}
 
+	@GetMapping("/firestations")
+	public String get() {
+		return informationService.getAllFirestations();
+
+	}
+
 	@GetMapping("/phoneAlert")
 	public String getPhoneAler(@RequestParam(required = false) Integer firestation) {
 

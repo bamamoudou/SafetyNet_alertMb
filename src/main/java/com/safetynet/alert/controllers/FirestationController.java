@@ -3,7 +3,6 @@ package com.safetynet.alert.controllers;
 import javax.inject.Singleton;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.services.impl.FirestationServiceImpl;
-import com.safetynet.alert.services.impl.InformationServiceImpl;
 
 @RestController
 @Singleton
@@ -20,7 +18,6 @@ public class FirestationController {
 
 	private FirestationServiceImpl firestationService;
 	
-	private InformationServiceImpl informationService;
 
 	private String messageStarting = "{\"message\" : \"";
 
@@ -30,11 +27,7 @@ public class FirestationController {
 		super();
 		this.firestationService = firestationService;
 	}
-	@GetMapping("/firestations")
-	public String get() {
-		return informationService.getAllFirestations();
-		
-	}
+
 
 	@PostMapping("/firestation")
 	public String post(@RequestBody Firestation newFirestation) {

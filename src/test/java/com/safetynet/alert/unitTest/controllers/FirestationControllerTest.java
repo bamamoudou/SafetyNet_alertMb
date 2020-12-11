@@ -2,7 +2,6 @@ package com.safetynet.alert.unitTest.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Tag;
@@ -28,13 +27,6 @@ public class FirestationControllerTest {
 
 	@Autowired
 	MockMvc mockMvc;
-	
-	@Tag("FirestationControllerTest")
-	@Test
-	public void getTest() throws Exception {
-		mockMvc.perform(get("/firestations")).andExpect(status().is2xxSuccessful()).andReturn();
-
-	}
 
 	@Tag("FirestationControllerTest")
 	@Test

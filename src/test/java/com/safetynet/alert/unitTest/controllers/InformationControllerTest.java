@@ -3,6 +3,7 @@ package com.safetynet.alert.unitTest.controllers;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class InformationControllerTest {
 	public void getMappingFirestationTest() throws Exception {
 
 		mockMvc.perform(get("/firestation")).andExpect(status().is2xxSuccessful()).andReturn();
+	}
+	
+	@Tag("FirestationControllerTest")
+	@Test
+	public void getTest() throws Exception {
+		mockMvc.perform(get("/firestations")).andExpect(status().is2xxSuccessful()).andReturn();
+
 	}
 
 	@Test
