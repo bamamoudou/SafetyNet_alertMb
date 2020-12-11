@@ -3,6 +3,8 @@ package com.safetynet.alert.services;
 import com.safetynet.alert.models.Firestation;
 
 public interface IFirestationService {
+	
+	public Firestation httpGetFirestation(String address, Integer number);
 
 	/**
 	 * Add Firestation from HTTP POST

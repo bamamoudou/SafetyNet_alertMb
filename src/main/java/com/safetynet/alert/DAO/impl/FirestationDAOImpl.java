@@ -67,6 +67,20 @@ public class FirestationDAOImpl implements IFireStationDAO {
 		return null;
 
 	}
+	@Override
+	public Firestation getFirestationByAddressAndNumber(String address, Integer number) {
+		
+		for (Firestation firestation : allStations) {
+			if(firestation.getAddress().equals(address) && firestation.getNumberStation().equals(number)) {
+				
+				return firestation;
+			}
+			
+		}
+		
+		return null;
+
+	}
 
 	@Override
 	public List<Firestation> getAllStations() {

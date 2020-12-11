@@ -17,6 +17,11 @@ public class FirestationServiceImpl implements IFirestationService {
 		super();
 		this.firestationDAO = firestationDAO;
 	}
+	
+	@Override
+	public Firestation httpGetFirestation(String address, Integer number) {
+		return firestationDAO.getFirestationByAddressAndNumber(address, number);
+	}
 
 	@Override
 	public String httpPostFirestation(Firestation newFirestation) {

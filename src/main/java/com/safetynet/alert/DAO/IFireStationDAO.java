@@ -28,6 +28,8 @@ public interface IFireStationDAO {
 	 * @return One Station
 	 */
 	public Firestation getFirestationByAddress(String address);
+	
+	public Firestation getFirestationByAddressAndNumber(String address, Integer number);
 
 	/**
 	 * Get all stations
