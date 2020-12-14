@@ -18,6 +18,16 @@ public class InformationController {
 		super();
 		this.informationService = informationService;
 	}
+	
+	@GetMapping("/persons")
+	public String getPersons() {
+		return informationService.getAllPersons();
+	}
+	
+	@GetMapping("/medicalRecords")
+	public String getMedicalRecords() {
+		return informationService.getAllMedicalRecords();
+	}
 
 	@GetMapping("/firestation")
 	public String getMappingFirestation(@RequestParam(required = false) Integer firestationNumber) {

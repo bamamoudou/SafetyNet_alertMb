@@ -25,54 +25,75 @@ public class InformationControllerTest {
 
 	@MockBean
 	InformationServiceImpl informationService;
-
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getMappingFirestationTest() throws Exception {
 
 		mockMvc.perform(get("/firestation")).andExpect(status().is2xxSuccessful()).andReturn();
 	}
 	
-	@Tag("FirestationControllerTest")
+	@Tag("InformationControllerTest")
 	@Test
-	public void getTest() throws Exception {
+	public void getFirestationsTest() throws Exception {
 		mockMvc.perform(get("/firestations")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
+	
+	@Tag("InformationControllerTest")
+	@Test
+	public void getPersonsTest() throws Exception {
+		mockMvc.perform(get("/persons")).andExpect(status().is2xxSuccessful()).andReturn();
 
+	}
+	
+	@Tag("InformationControllerTest")
+	@Test
+	public void getMedicalRecordsTest() throws Exception {
+		mockMvc.perform(get("/medicalRecords")).andExpect(status().is2xxSuccessful()).andReturn();
+
+	}
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getChildAlertTest() throws Exception {
 
 		mockMvc.perform(get("/childAlert")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-
+	
+	@Tag("InformationControllerTest")
 	@Test
 	public void getPhoneAlertTest() throws Exception {
 
 		mockMvc.perform(get("/phoneAlert")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getFireAlertTest() throws Exception {
 
 		mockMvc.perform(get("/fire")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getFloodAlertTest() throws Exception {
 
 		mockMvc.perform(get("/flood/stations")).andExpect(status().is2xxSuccessful()).andReturn();
 	}
-
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getPersonInfoTest() throws Exception {
 
 		mockMvc.perform(get("/personInfo")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-
+   
+	@Tag("InformationControllerTest")
 	@Test
 	public void getCommunityEmailTest() throws Exception {
 

@@ -1,0 +1,40 @@
+[INFO ] 2020-12-14 20:01:14.718 [main] WebMvcTestContextBootstrapper (305) - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.safetynet.alert.unitTest.controllers.MedicalRecordTest], using SpringBootContextLoader
+[INFO ] 2020-12-14 20:01:14.732 [main] AbstractContextLoader (264) - Could not detect default resource locations for test class [com.safetynet.alert.unitTest.controllers.MedicalRecordTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 2020-12-14 20:01:14.734 [main] AnnotationConfigContextLoaderUtils (83) - Could not detect default configuration classes for test class [com.safetynet.alert.unitTest.controllers.MedicalRecordTest]: MedicalRecordTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 2020-12-14 20:01:15.007 [main] SpringBootTestContextBootstrapper (238) - Found @SpringBootConfiguration com.safetynet.alert.AlertApplication for test class com.safetynet.alert.unitTest.controllers.MedicalRecordTest
+[INFO ] 2020-12-14 20:01:15.016 [main] WebMvcTestContextBootstrapper (245) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 2020-12-14 20:01:15.143 [main] WebMvcTestContextBootstrapper (174) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@13f95696, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@cd1d761, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@68be8808, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@32193bea, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6b8d96d9, org.springframework.test.context.event.EventPublishingTestExecutionListener@69653e16, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@758705fa, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@ebaa6cb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@906d29b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@49d3c823, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@436bc36, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5fe1ce85]
+[ERROR] 2020-12-14 20:01:20.756 [main] MedicalRecordDAOImpl (96) - Medical record doesn't exist in medical records list and could not be updated
+[ERROR] 2020-12-14 20:01:20.756 [main] MedicalRecordService (46) - Medical record can't be updated
+[ERROR] 2020-12-14 20:01:21.051 [main] MedicalRecordDAOImpl (71) - The medical record of person n° 0, born on 03/06/1984 does not correspond to an existing profile
+[ERROR] 2020-12-14 20:01:21.052 [main] MedicalRecordService (31) - Medical record can't be added
+[ERROR] 2020-12-14 20:01:21.222 [main] FirestationDAOImpl (129) - Station doesn't exist in stations list and could not be updated
+[ERROR] 2020-12-14 20:01:21.224 [main] FirestationService (50) - Station mapping can't be updated
+[ERROR] 2020-12-14 20:01:21.386 [main] MedicalRecordDAOImpl (118) - Medical record doesn't exist in medical records list and could not be deleted
+[ERROR] 2020-12-14 20:01:21.387 [main] PersonService (63) - The medical record of person n°1 hasn't be deleted
+[ERROR] 2020-12-14 20:01:23.777 [main] DatabaseConfigImpl (39) - Connection error
+[ERROR] 2020-12-14 20:01:27.905 [main] MedicalRecordDAOImpl (96) - Medical record doesn't exist in medical records list and could not be updated
+[ERROR] 2020-12-14 20:01:27.928 [main] MedicalRecordDAOImpl (71) - The medical record of person n° 4, born on 01/01/1920 does not correspond to an existing profile
+[ERROR] 2020-12-14 20:01:27.931 [main] MedicalRecordDAOImpl (118) - Medical record doesn't exist in medical records list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.935 [main] FirestationDAOImpl (173) - Station doesn't exist in stations list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.936 [main] FirestationDAOImpl (173) - Station doesn't exist in stations list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.936 [main] FirestationDAOImpl (173) - Station doesn't exist in stations list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.940 [main] FirestationDAOImpl (107) - Station informations aren't complete and could not be added
+[ERROR] 2020-12-14 20:01:27.953 [main] FirestationDAOImpl (152) - Station doesn't exist in stations list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.979 [main] PersonDAOImpl (132) - Person doesn't exist in persons list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.979 [main] PersonDAOImpl (132) - Person doesn't exist in persons list and could not be deleted
+[ERROR] 2020-12-14 20:01:27.982 [main] PersonDAOImpl (110) - Person doesn't exist in persons list and could not be updated
+[ERROR] 2020-12-14 20:01:27.992 [main] PersonDAOImpl (83) - Person isn't complete and could not be added
+[ERROR] 2020-12-14 20:01:28.159 [main] FirestationService (34) - Station mapping can't be added
+[ERROR] 2020-12-14 20:01:28.169 [main] FirestationService (76) - Station mapping can't be deleted
+[ERROR] 2020-12-14 20:01:28.182 [main] FirestationService (50) - Station mapping can't be updated
+[ERROR] 2020-12-14 20:01:28.186 [main] FirestationService (64) - Station can't be deleted
+[ERROR] 2020-12-14 20:01:28.410 [main] MedicalRecordService (31) - Medical record can't be added
+[ERROR] 2020-12-14 20:01:28.428 [main] MedicalRecordService (46) - Medical record can't be updated
+[ERROR] 2020-12-14 20:01:28.431 [main] MedicalRecordService (60) - Medical record can't be deleted
+[ERROR] 2020-12-14 20:01:28.442 [main] PersonService (35) - Person can't be added
+[ERROR] 2020-12-14 20:01:28.445 [main] PersonService (71) - The person profile n°0 hasn't be deleted
+[ERROR] 2020-12-14 20:01:28.453 [main] PersonService (49) - Person profile can't be updated
+[ERROR] 2020-12-14 20:01:28.465 [main] PersonService (63) - The medical record of person n°0 hasn't be deleted
+[ERROR] 2020-12-14 20:01:28.475 [main] PersonService (63) - The medical record of person n°0 hasn't be deleted
+[ERROR] 2020-12-14 20:01:28.476 [main] PersonService (71) - The person profile n°0 hasn't be deleted
