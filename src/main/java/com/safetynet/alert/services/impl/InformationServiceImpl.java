@@ -164,12 +164,12 @@ public class InformationServiceImpl implements IInformationService {
 	}
 
 	@Override
-	public String getAllChildByAddress(String address) {
+	public String getChildrenByAddress(String address) {
 		int childCount = 0;
 		StringBuilder data = new StringBuilder();
 
 		data.append("{\"address\" : \"").append(JSONValue.escape(address)).append("\",");
-		data.append("\"childs\" : [");
+		data.append("\"children\" : [");
 
 		for (Person iPerson : this.personDAO.getAllPersons()) {
 			if ((medicalRecordDAO.getMedicalRecord(iPerson.getId()).getAge() <= 18)
@@ -207,12 +207,12 @@ public class InformationServiceImpl implements IInformationService {
 	}
 
 	@Override
-	public String getAllPersonsLivingAtTheAddress(String address) {
+	public String getAllPersonsLivingAtTheAddressAndTheNumberStation(String address) {
 		StringBuilder data = new StringBuilder();
 		MedicalRecord personMedicalRecords;
 
 		data.append("{\"address\" : \"").append(JSONValue.escape(address)).append("\",");
-		data.append("\"station\": ").append(stationDAO.getFirestationByAddress(address).getNumberStation()).append(",");
+		data.append("\"stationNumber\": ").append(stationDAO.getFirestationByAddress(address).getNumberStation()).append(",");
 		data.append("\"persons\" : [");
 
 		for (Person iPerson : this.personDAO.getAllPersons()) {
@@ -255,7 +255,7 @@ public class InformationServiceImpl implements IInformationService {
 	}
 
 	@Override
-	public String getAllPersonsServedByTheStations(String firestation) {
+	public String getHouseholdListAndPersonsPerAddressWhenFlood(String firestation) {
 		StringBuilder data = new StringBuilder();
 
 		List<Integer> firestationNumbers = new ArrayList<>();
@@ -265,7 +265,7 @@ public class InformationServiceImpl implements IInformationService {
 		data.append("{\"stations\" : [");
 		for (Integer iNumStation : firestationNumbers) {
 			data.append("{\"number\" : ").append(iNumStation).append(",");
-			data.append("\"homes\" : [");
+			data.append("\"households\" : [");
 
 			for (Firestation iFirestation : stationDAO.getFirestationByNumber(iNumStation)) {
 				data.append("{ \"address\" : \"").append(JSONValue.escape(iFirestation.getAddress())).append("\",");

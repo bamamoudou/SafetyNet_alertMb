@@ -25,74 +25,76 @@ public class InformationControllerTest {
 
 	@MockBean
 	InformationServiceImpl informationService;
-   
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getMappingFirestationTest() throws Exception {
 
-		mockMvc.perform(get("/firestation")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/firestation").param("stationNumber", "1")).andExpect(status().is2xxSuccessful())
+				.andReturn();
 	}
-	
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getFirestationsTest() throws Exception {
 		mockMvc.perform(get("/firestations")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-	
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getPersonsTest() throws Exception {
 		mockMvc.perform(get("/persons")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-	
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getMedicalRecordsTest() throws Exception {
 		mockMvc.perform(get("/medicalRecords")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-   
+
 	@Tag("InformationControllerTest")
 	@Test
-	public void getChildAlertTest() throws Exception {
+	public void getChildrenAtThisAddressTest() throws Exception {
 
-		mockMvc.perform(get("/childAlert")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/childAlert").param("address", "1509 Culver St")).andExpect(status().is2xxSuccessful())
+				.andReturn();
 
 	}
-	
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getPhoneAlertTest() throws Exception {
 
-		mockMvc.perform(get("/phoneAlert")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/phoneAlert").param("firestation", "1")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-   
+
 	@Tag("InformationControllerTest")
 	@Test
-	public void getFireAlertTest() throws Exception {
+	public void getAllPersonsLivingAtThisAddressAndTheNumberStationTest() throws Exception {
 
-		mockMvc.perform(get("/fire")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/fire").param("address", "908 73rd St")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-   
+
 	@Tag("InformationControllerTest")
 	@Test
-	public void getFloodAlertTest() throws Exception {
+	public void getHouseholdListAndPersonsPerAddressByStationListWhenFlood() throws Exception {
 
-		mockMvc.perform(get("/flood/stations")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/flood/stations").param("stations", "1,2")).andExpect(status().is2xxSuccessful()).andReturn();
 	}
-   
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getPersonInfoTest() throws Exception {
 
-		mockMvc.perform(get("/personInfo")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/personInfo").param("firstName", "John" ).param("lastName", "Boyd")).andExpect(status().is2xxSuccessful()).andReturn();
 
 	}
-   
+
 	@Tag("InformationControllerTest")
 	@Test
 	public void getCommunityEmailTest() throws Exception {

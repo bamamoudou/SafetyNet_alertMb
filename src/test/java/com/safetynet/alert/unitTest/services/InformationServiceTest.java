@@ -185,10 +185,10 @@ public class InformationServiceTest {
 
 	@Tag("InformationServiceTest")
 	@Test
-	public void getAllChildByAddressMoreThanEightTeenTest() throws JSONException {
+	public void getAllChildrenByAddressMoreThanEightTeenTest() throws JSONException {
 		when(personDAO.getAllPersons()).thenReturn(persons);
 		when(medicalRecordDAO.getMedicalRecord(any(Integer.class))).thenReturn(medicalRecords.get(0));
-		data = informationService.getAllChildByAddress("1509 Culver St");
+		data = informationService.getChildrenByAddress("1509 Culver St");
 		verify(personDAO, times(2)).getAllPersons();
 
 		assertThat(data).isNull();
@@ -196,17 +196,17 @@ public class InformationServiceTest {
 
 	@Tag("InformationServiceTest")
 	@Test
-	public void getAllChildByAddressLessThanEightTeenTest() throws JSONException {
+	public void getAllChildrenByAddressLessThanEightTeenTest() throws JSONException {
 		when(personDAO.getAllPersons()).thenReturn(persons);
 		when(medicalRecordDAO.getMedicalRecord(anyInt())).thenReturn(medicalRecords.get(2));
-		data = informationService.getAllChildByAddress("1509 Culver St");
+		data = informationService.getChildrenByAddress("1509 Culver St");
 		verify(personDAO, times(2)).getAllPersons();
 
 		assertThat(data).isNotEmpty();
 
 		JSONObject result = new JSONObject(data);
 		String address = (String) result.get("address");
-		JSONArray childs = (JSONArray) result.get("childs");
+		JSONArray childs = (JSONArray) result.get("children");
 		JSONArray adults = (JSONArray) result.get("adults");
 
 		assertThat(address).isEqualTo("1509 Culver St");
@@ -260,13 +260,13 @@ public class InformationServiceTest {
 		when(personDAO.getAllPersons()).thenReturn(persons);
 		when(stationDAO.getFirestationByAddress(anyString())).thenReturn(stations.get(0));
 		when(medicalRecordDAO.getMedicalRecord(anyInt())).thenReturn(medicalRecords.get(0));
-		data = informationService.getAllPersonsLivingAtTheAddress("1509 Culver St");
+		data = informationService.getAllPersonsLivingAtTheAddressAndTheNumberStation("1509 Culver St");
 		verify(personDAO, times(1)).getAllPersons();
 		verify(stationDAO, times(1)).getFirestationByAddress(anyString());
 		verify(medicalRecordDAO, times(5)).getMedicalRecord(anyInt());
 
 		JSONObject result = new JSONObject(data);
-		Integer stationNumber = (Integer) result.get("station");
+		Integer stationNumber = (Integer) result.get("stationNumber");
 		String address = (String) result.get("address");
 		JSONArray persons = (JSONArray) result.get("persons");
 
@@ -277,7 +277,7 @@ public class InformationServiceTest {
 
 	@Tag("InformationServiceTest")
 	@Test
-	public void getAllPersonsServedByTheStationsTest() throws JSONException {
+	public void getHouseholdListAndPersonsPerAddressWhenFlood() throws JSONException {
 		List<Firestation> listOfStation = new ArrayList<>();
 
 		for (Firestation iStation : stations) {
@@ -289,7 +289,7 @@ public class InformationServiceTest {
 		when(stationDAO.getFirestationByNumber(anyInt())).thenReturn(listOfStation);
 		when(personDAO.getAllPersons()).thenReturn(persons);
 		when(medicalRecordDAO.getMedicalRecord(anyInt())).thenReturn(medicalRecords.get(0));
-		data = informationService.getAllPersonsServedByTheStations("3");
+		data = informationService.getHouseholdListAndPersonsPerAddressWhenFlood("3");
 		verify(stationDAO, times(1)).getFirestationByNumber(anyInt());
 		verify(personDAO, times(4)).getAllPersons();
 		verify(medicalRecordDAO, times(6)).getMedicalRecord(anyInt());
@@ -298,14 +298,14 @@ public class InformationServiceTest {
 		JSONArray stations = (JSONArray) result.get("stations");
 		JSONObject station = (JSONObject) stations.get(0);
 		Integer number = (Integer) station.get("number");
-		JSONArray homes = (JSONArray) station.get("homes");
-		JSONObject home = (JSONObject) homes.get(0);
+		JSONArray households = (JSONArray) station.get("households");
+		JSONObject home = (JSONObject) households.get(0);
 		String address = (String) home.get("address");
 		JSONArray persons = (JSONArray) home.get("persons");
 
 		assertThat(stations.length()).isEqualTo(1);
 		assertThat(number).isEqualTo(3);
-		assertThat(homes.length()).isEqualTo(4);
+		assertThat(households.length()).isEqualTo(4);
 		assertThat(address).isEqualTo("1509 Culver St");
 		assertThat(persons.length()).isEqualTo(5);
 	}

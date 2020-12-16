@@ -30,9 +30,9 @@ public class InformationController {
 	}
 
 	@GetMapping("/firestation")
-	public String getMappingFirestation(@RequestParam(required = false) Integer firestationNumber) {
+	public String getMappingFirestation(@RequestParam Integer stationNumber) {
 
-		return informationService.getAllPersonsServedByTheStationWithCount(firestationNumber);
+		return informationService.getAllPersonsServedByTheStationWithCount(stationNumber);
 
 	}
 
@@ -43,34 +43,34 @@ public class InformationController {
 	}
 
 	@GetMapping("/phoneAlert")
-	public String getPhoneAler(@RequestParam(required = false) Integer firestation) {
+	public String getAllPersonsPhoneByStationNumbe(@RequestParam Integer firestation) {
 
 		return informationService.getAllPersonsPhoneByStationNumber(firestation);
 
 	}
 
 	@GetMapping("/childAlert")
-	public String getchildAlert(@RequestParam(required = false) String address) {
+	public String getchildrenAtThisAddress(@RequestParam String address) {
 
-		return informationService.getAllChildByAddress(address);
+		return informationService.getChildrenByAddress(address);
 
 	}
 
 	@GetMapping("/fire")
-	public String getFire(@RequestParam(required = false) String address) {
+	public String getAllPersonsLivingAtThisAddressAndTheNumberStation(@RequestParam String address) {
 
-		return informationService.getAllPersonsLivingAtTheAddress(address);
+		return informationService.getAllPersonsLivingAtTheAddressAndTheNumberStation(address);
 	}
 
 	@GetMapping("/flood/stations")
-	public String getFlood(@RequestParam(required = false) String firestation) {
+	public String getHouseholdListAndPersonsPerAddressByStationListWhenFlood(@RequestParam String stations) {
 
-		return informationService.getAllPersonsServedByTheStations(firestation);
+		return informationService.getHouseholdListAndPersonsPerAddressWhenFlood(stations);
 
 	}
 
 	@GetMapping("/personInfo")
-	public String getPersonInfo(@RequestParam(required = false) String firstName, String lastName) {
+	public String getPersonInfo(@RequestParam String firstName, String lastName) {
 
 		return informationService.getAllCompleteProfileOfPersonsByName(firstName, lastName);
 	}

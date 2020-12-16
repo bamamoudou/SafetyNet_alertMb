@@ -36,7 +36,7 @@ public interface IInformationService {
 	 * @param address
 	 * @return String in JSON format
 	 */
-	String getAllChildByAddress(String address);
+	String getChildrenByAddress(String address);
 
 	/**
 	 * Get all informations of persons living at this address with their served
@@ -45,7 +45,7 @@ public interface IInformationService {
 	 * @param address
 	 * @return String in JSON format
 	 */
-	String getAllPersonsLivingAtTheAddress(String address);
+	String getAllPersonsLivingAtTheAddressAndTheNumberStation(String address);
 
 	/**
 	 * Get all persons served by the station group by address
@@ -53,7 +53,7 @@ public interface IInformationService {
 	 * @param stationNumbers
 	 * @return String in JSON format
 	 */
-	String getAllPersonsServedByTheStations(String firestation);
+	String getHouseholdListAndPersonsPerAddressWhenFlood(String firestation);
 
 	/**
 	 * Get all phones of persons by station location
