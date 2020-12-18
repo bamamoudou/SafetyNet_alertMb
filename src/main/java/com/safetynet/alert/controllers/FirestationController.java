@@ -17,40 +17,33 @@ import com.safetynet.alert.services.impl.FirestationServiceImpl;
 public class FirestationController {
 
 	private FirestationServiceImpl firestationService;
-	
-
-	private String messageStarting = "{\"message\" : \"";
-
-	private String messageEnding = "\" }";
 
 	public FirestationController(FirestationServiceImpl firestationService) {
 		super();
 		this.firestationService = firestationService;
 	}
 
-
 	@PostMapping("/firestation")
 	public String post(@RequestBody Firestation newFirestation) {
-		return messageStarting + firestationService.httpPostFirestation(newFirestation) + messageEnding;
-		
+		return firestationService.httpPostFirestation(newFirestation);
 
 	}
 
 	@PutMapping("/firestation")
 	public String put(@RequestBody Firestation firestation) {
-		return messageStarting + firestationService.httpPutFirestation(firestation) + messageEnding;
+		return firestationService.httpPutFirestation(firestation);
 
 	}
 
 	@DeleteMapping("/firestation/address/{address}")
 	public String deleteMapping(@PathVariable String address) {
 
-		return messageStarting + firestationService.httpDeleteMapping(address) + messageEnding;
+		return firestationService.httpDeleteMapping(address);
 	}
 
 	@DeleteMapping("/firestation/firestationNumber/{number}")
 	public String deleteFirestation(@PathVariable Integer number) {
-		return messageStarting + firestationService.httpDeleteFirestation(number) + messageEnding;
+		return firestationService.httpDeleteFirestation(number);
 	}
 
 }

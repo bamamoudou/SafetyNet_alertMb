@@ -38,7 +38,8 @@ public class InformationServiceImpl implements IInformationService {
 	 */
 	private MedicalRecordDAOImpl medicalRecordDAO;
 
-	public InformationServiceImpl(PersonDAOImpl personDAO, FirestationDAOImpl stationDAO, MedicalRecordDAOImpl medicalRecordDAO) {
+	public InformationServiceImpl(PersonDAOImpl personDAO, FirestationDAOImpl stationDAO,
+			MedicalRecordDAOImpl medicalRecordDAO) {
 		super();
 		this.personDAO = personDAO;
 		this.stationDAO = stationDAO;
@@ -50,21 +51,50 @@ public class InformationServiceImpl implements IInformationService {
 			data.delete(data.length() - 1, data.length());
 	}
 
+	public String getPersonById(Integer id) {
+		StringBuilder data = new StringBuilder();
+		data.append("{\"person\" : [");
+
+		for (Person person : this.personDAO.getAllPersons()) {
+			person = personDAO.getPersonsById(id);
+			if (person.getId().equals(id)) {
+				data.append("{");
+				data.append("\"id\" : ").append(person.getId()).append(",");
+				data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+				data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+				data.append("\"address\" : \"").append(JSONValue.escape(person.getAddress())).append("\",");
+				data.append("\"city\" : \"").append(JSONValue.escape(person.getCity())).append("\",");
+				data.append("\"zip\" : \"").append(JSONValue.escape(person.getZip())).append("\",");
+				data.append("\"email\" : \"").append(JSONValue.escape(person.getEmail())).append("\",");
+				data.append("\"phone\" : \"").append(JSONValue.escape(person.getPhone())).append("\"");
+				data.append("},");
+
+			}
+
+		}
+
+		deleteLastComma(data);
+		data.append("]}");
+		LOGGER.info(new StringBuffer("GET : A person by name"));
+		return data.toString();
+
+	}
+
 	@Override
 	public String getAllPersons() {
 		StringBuilder data = new StringBuilder();
 		data.append("{\"persons\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
+		for (Person person : this.personDAO.getAllPersons()) {
 			data.append("{");
-			data.append("\"id\" : ").append(iPerson.getId()).append(",");
-			data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-			data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
-			data.append("\"address\" : \"").append(JSONValue.escape(iPerson.getAddress())).append("\",");
-			data.append("\"city\" : \"").append(JSONValue.escape(iPerson.getCity())).append("\",");
-			data.append("\"zip\" : \"").append(JSONValue.escape(iPerson.getZip())).append("\",");
-			data.append("\"email\" : \"").append(JSONValue.escape(iPerson.getEmail())).append("\",");
-			data.append("\"phone\" : \"").append(JSONValue.escape(iPerson.getPhone())).append("\"");
+			data.append("\"id\" : ").append(person.getId()).append(",");
+			data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+			data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+			data.append("\"address\" : \"").append(JSONValue.escape(person.getAddress())).append("\",");
+			data.append("\"city\" : \"").append(JSONValue.escape(person.getCity())).append("\",");
+			data.append("\"zip\" : \"").append(JSONValue.escape(person.getZip())).append("\",");
+			data.append("\"email\" : \"").append(JSONValue.escape(person.getEmail())).append("\",");
+			data.append("\"phone\" : \"").append(JSONValue.escape(person.getPhone())).append("\"");
 			data.append("},");
 		}
 
@@ -79,10 +109,10 @@ public class InformationServiceImpl implements IInformationService {
 		StringBuilder data = new StringBuilder();
 		data.append("{\"stations\" : [");
 
-		for (Firestation iFirestation : this.stationDAO.getAllStations()) {
+		for (Firestation firestation : this.stationDAO.getAllStations()) {
 			data.append("{");
-			data.append("\"number\" : ").append(iFirestation.getNumberStation()).append(",");
-			data.append("\"address\" : \"").append(JSONValue.escape(iFirestation.getAddress())).append("\"");
+			data.append("\"number\" : ").append(firestation.getNumberStation()).append(",");
+			data.append("\"address\" : \"").append(JSONValue.escape(firestation.getAddress())).append("\"");
 			data.append("},");
 		}
 
@@ -97,19 +127,19 @@ public class InformationServiceImpl implements IInformationService {
 		StringBuilder data = new StringBuilder();
 		data.append("{\"medicalRecords\" : [");
 
-		for (MedicalRecord iMedicalRecord : this.medicalRecordDAO.getAllMedicalRecords()) {
+		for (MedicalRecord medicalRecord : this.medicalRecordDAO.getAllMedicalRecords()) {
 			data.append("{");
-			data.append("\"id\" : ").append(iMedicalRecord.getId()).append(",");
-			data.append("\"birthdate\" : \"").append(JSONValue.escape(iMedicalRecord.getBirthdate())).append("\",");
-			data.append("\"age\" : ").append(iMedicalRecord.getAge()).append(",");
+			data.append("\"id\" : ").append(medicalRecord.getId()).append(",");
+			data.append("\"birthdate\" : \"").append(JSONValue.escape(medicalRecord.getBirthdate())).append("\",");
+			data.append("\"age\" : ").append(medicalRecord.getAge()).append(",");
 			data.append("\"medicalRecords\" : {");
 			data.append("\"medications\" : [");
-			for (String medication : iMedicalRecord.getMedications()) {
+			for (String medication : medicalRecord.getMedications()) {
 				data.append("\"").append(JSONValue.escape(medication)).append("\",");
 			}
 			deleteLastComma(data);
 			data.append("], \"allergies\" : [");
-			for (String allergy : iMedicalRecord.getAllergies()) {
+			for (String allergy : medicalRecord.getAllergies()) {
 				data.append("\"").append(JSONValue.escape(allergy)).append("\",");
 			}
 			deleteLastComma(data);
@@ -131,10 +161,10 @@ public class InformationServiceImpl implements IInformationService {
 		data.append("{\"station\" : " + stationNumber + ",");
 		data.append("\"persons\" : [");
 
-		for (Firestation iFirestation : this.stationDAO.getAllStations()) {
-			if (iFirestation.getNumberStation().equals(stationNumber)) {
+		for (Firestation firestation : this.stationDAO.getAllStations()) {
+			if (firestation.getNumberStation().equals(stationNumber)) {
 				for (Person iPerson : this.personDAO.getAllPersons()) {
-					if (iPerson.getAddress().equals(iFirestation.getAddress())) {
+					if (iPerson.getAddress().equals(firestation.getAddress())) {
 						data.append("{");
 						data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
 						data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
@@ -171,13 +201,13 @@ public class InformationServiceImpl implements IInformationService {
 		data.append("{\"address\" : \"").append(JSONValue.escape(address)).append("\",");
 		data.append("\"children\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
-			if ((medicalRecordDAO.getMedicalRecord(iPerson.getId()).getAge() <= 18)
-					&& (iPerson.getAddress().equals(address))) {
+		for (Person person : this.personDAO.getAllPersons()) {
+			if ((medicalRecordDAO.getMedicalRecord(person.getId()).getAge() <= 18)
+					&& (person.getAddress().equals(address))) {
 				data.append("{");
-				data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-				data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
-				data.append("\"age\" : ").append(medicalRecordDAO.getMedicalRecord(iPerson.getId()).getAge()).append("},");
+				data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+				data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+				data.append("\"age\" : ").append(medicalRecordDAO.getMedicalRecord(person.getId()).getAge()).append("},");
 				childCount++;
 			}
 		}
@@ -185,12 +215,12 @@ public class InformationServiceImpl implements IInformationService {
 		deleteLastComma(data);
 		data.append("], \"adults\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
-			if ((medicalRecordDAO.getMedicalRecord(iPerson.getId()).getAge() > 18)
-					&& (iPerson.getAddress().equals(address))) {
+		for (Person person : this.personDAO.getAllPersons()) {
+			if ((medicalRecordDAO.getMedicalRecord(person.getId()).getAge() > 18)
+					&& (person.getAddress().equals(address))) {
 				data.append("{");
-				data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-				data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\"");
+				data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+				data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\"");
 				data.append("},");
 			}
 		}
@@ -212,16 +242,17 @@ public class InformationServiceImpl implements IInformationService {
 		MedicalRecord personMedicalRecords;
 
 		data.append("{\"address\" : \"").append(JSONValue.escape(address)).append("\",");
-		data.append("\"stationNumber\": ").append(stationDAO.getFirestationByAddress(address).getNumberStation()).append(",");
+		data.append("\"stationNumber\": ").append(stationDAO.getFirestationByAddress(address).getNumberStation())
+				.append(",");
 		data.append("\"persons\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
-			if (iPerson.getAddress().equals(address)) {
-				personMedicalRecords = medicalRecordDAO.getMedicalRecord(iPerson.getId());
+		for (Person person : this.personDAO.getAllPersons()) {
+			if (person.getAddress().equals(address)) {
+				personMedicalRecords = medicalRecordDAO.getMedicalRecord(person.getId());
 				data.append("{");
-				data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-				data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
-				data.append("\"phone\" : \"").append(JSONValue.escape(iPerson.getPhone())).append("\",");
+				data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+				data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+				data.append("\"phone\" : \"").append(JSONValue.escape(person.getPhone())).append("\",");
 				data.append("\"birthdate\" : \"")
 						.append((personMedicalRecords != null) ? JSONValue.escape(personMedicalRecords.getBirthdate()) : "")
 						.append("\",");
@@ -263,23 +294,23 @@ public class InformationServiceImpl implements IInformationService {
 			firestationNumbers.add(Integer.valueOf(subStr));
 
 		data.append("{\"stations\" : [");
-		for (Integer iNumStation : firestationNumbers) {
-			data.append("{\"number\" : ").append(iNumStation).append(",");
+		for (Integer numStation : firestationNumbers) {
+			data.append("{\"number\" : ").append(numStation).append(",");
 			data.append("\"households\" : [");
 
-			for (Firestation iFirestation : stationDAO.getFirestationByNumber(iNumStation)) {
+			for (Firestation iFirestation : stationDAO.getFirestationByNumber(numStation)) {
 				data.append("{ \"address\" : \"").append(JSONValue.escape(iFirestation.getAddress())).append("\",");
 
 				MedicalRecord personMedicalRecords;
 
 				data.append("\"persons\" : [");
-				for (Person iPerson : this.personDAO.getAllPersons()) {
-					if (iPerson.getAddress().equals(iFirestation.getAddress())) {
-						personMedicalRecords = this.medicalRecordDAO.getMedicalRecord(iPerson.getId());
+				for (Person person : this.personDAO.getAllPersons()) {
+					if (person.getAddress().equals(iFirestation.getAddress())) {
+						personMedicalRecords = this.medicalRecordDAO.getMedicalRecord(person.getId());
 						data.append("{");
-						data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-						data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
-						data.append("\"phone\" : \"").append(JSONValue.escape(iPerson.getPhone())).append("\",");
+						data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+						data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+						data.append("\"phone\" : \"").append(JSONValue.escape(person.getPhone())).append("\",");
 						data.append("\"birthdate\" : \"").append(
 								(personMedicalRecords != null) ? JSONValue.escape(personMedicalRecords.getBirthdate()) : "")
 								.append("\",");
@@ -322,10 +353,10 @@ public class InformationServiceImpl implements IInformationService {
 		data.append("{\"station\": ").append(stationNumber).append(",");
 		data.append("\"phones\" : [");
 
-		for (Firestation iFiretation : this.stationDAO.getAllStations()) {
-			if (iFiretation.getNumberStation().equals(stationNumber)) {
+		for (Firestation firestation : this.stationDAO.getAllStations()) {
+			if (firestation.getNumberStation().equals(stationNumber)) {
 				for (Person iPerson : this.personDAO.getAllPersons()) {
-					if (iPerson.getAddress().equals(iFiretation.getAddress())) {
+					if (iPerson.getAddress().equals(firestation.getAddress())) {
 						data.append("\"").append(JSONValue.escape(iPerson.getPhone())).append("\",");
 					}
 				}
@@ -346,18 +377,18 @@ public class InformationServiceImpl implements IInformationService {
 
 		data.append("{\"persons\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
-			if (iPerson.getFirstName().equals(firstName) && iPerson.getLastName().equals(lastName)) {
-				personMedicalRecords = medicalRecordDAO.getMedicalRecord(iPerson.getId());
+		for (Person person : this.personDAO.getAllPersons()) {
+			if (person.getFirstName().equals(person.getFirstName()) && person.getLastName().equals(person.getLastName())) {
+				personMedicalRecords = medicalRecordDAO.getMedicalRecord(person.getId());
 				data.append("{");
-				data.append("\"id\" : ").append(iPerson.getId()).append(",");
-				data.append("\"firstName\" : \"").append(JSONValue.escape(iPerson.getFirstName())).append("\",");
-				data.append("\"lastName\" : \"").append(JSONValue.escape(iPerson.getLastName())).append("\",");
-				data.append("\"address\" : \"").append(JSONValue.escape(iPerson.getAddress())).append("\",");
-				data.append("\"city\" : \"").append(JSONValue.escape(iPerson.getCity())).append("\",");
-				data.append("\"zip\" : \"").append(JSONValue.escape(iPerson.getZip())).append("\",");
-				data.append("\"email\" : \"").append(JSONValue.escape(iPerson.getEmail())).append("\",");
-				data.append("\"phone\" : \"").append(JSONValue.escape(iPerson.getPhone())).append("\",");
+				data.append("\"id\" : ").append(person.getId()).append(",");
+				data.append("\"firstName\" : \"").append(JSONValue.escape(person.getFirstName())).append("\",");
+				data.append("\"lastName\" : \"").append(JSONValue.escape(person.getLastName())).append("\",");
+				data.append("\"address\" : \"").append(JSONValue.escape(person.getAddress())).append("\",");
+				data.append("\"city\" : \"").append(JSONValue.escape(person.getCity())).append("\",");
+				data.append("\"zip\" : \"").append(JSONValue.escape(person.getZip())).append("\",");
+				data.append("\"email\" : \"").append(JSONValue.escape(person.getEmail())).append("\",");
+				data.append("\"phone\" : \"").append(JSONValue.escape(person.getPhone())).append("\",");
 				data.append("\"birthdate\" : \"")
 						.append((personMedicalRecords != null) ? JSONValue.escape(personMedicalRecords.getBirthdate()) : "")
 						.append("\",");
@@ -392,11 +423,12 @@ public class InformationServiceImpl implements IInformationService {
 	@Override
 	public String getAllPersonsEmailByCity(String city) {
 		StringBuilder data = new StringBuilder();
-		data.append("{\"emails\" : [");
+		data.append("{\"city\": ").append(city).append(",");
+		data.append("\"emails\" : [");
 
-		for (Person iPerson : this.personDAO.getAllPersons()) {
-			if (iPerson.getCity().equals(city)) {
-				data.append("\"").append(JSONValue.escape(iPerson.getEmail())).append("\",");
+		for (Person person : this.personDAO.getAllPersons()) {
+			if (person.getCity().equals(person.getCity())) {
+				data.append("\"").append(JSONValue.escape(person.getEmail())).append("\",");
 			}
 		}
 

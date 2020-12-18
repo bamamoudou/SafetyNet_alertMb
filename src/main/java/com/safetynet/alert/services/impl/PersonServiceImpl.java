@@ -24,12 +24,12 @@ public class PersonServiceImpl implements IPersonService {
 	}
 
 	@Override
-	public String httpPostPerson(Person newPerson) {
-		if (newPerson != null) {
-			newPerson.setId(personDAO.getAllPersons().size() + 1);
-			if (personDAO.addNewPerson(newPerson)) {
-				LOGGER.info("New person profile added, id : " + newPerson.getId() + ", name : " + newPerson.getFirstName()
-						+ " " + newPerson.getLastName());
+	public String httpPostPerson(Person addNewPerson) {
+		if (addNewPerson != null) {
+			addNewPerson.setId(personDAO.getAllPersons().size() + 1);
+			if (personDAO.addNewPerson(addNewPerson)) {
+				LOGGER.info("New person profile added, id : " + addNewPerson.getId() + ", name : " + addNewPerson.getFirstName()
+						+ " " + addNewPerson.getLastName());
 				return "Person added";
 			} else {
 				LOGGER.error("Person can't be added");

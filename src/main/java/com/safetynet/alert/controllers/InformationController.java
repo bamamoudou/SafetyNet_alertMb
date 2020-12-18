@@ -18,12 +18,17 @@ public class InformationController {
 		super();
 		this.informationService = informationService;
 	}
-	
+
 	@GetMapping("/persons")
 	public String getPersons() {
 		return informationService.getAllPersons();
 	}
-	
+
+	@GetMapping("/person")
+	public String getPersonById(@RequestParam Integer id) {
+		return informationService.getPersonById(id);
+	}
+
 	@GetMapping("/medicalRecords")
 	public String getMedicalRecords() {
 		return informationService.getAllMedicalRecords();
@@ -76,7 +81,7 @@ public class InformationController {
 	}
 
 	@GetMapping("/communityEmail")
-	public String getCommunityEmail(@RequestParam(required = false) String city) {
+	public String getCommunityEmail(@RequestParam String city) {
 
 		return informationService.getAllPersonsEmailByCity(city);
 	}

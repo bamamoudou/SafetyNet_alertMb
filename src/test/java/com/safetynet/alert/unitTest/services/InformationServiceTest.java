@@ -317,7 +317,7 @@ public class InformationServiceTest {
 		when(medicalRecordDAO.getMedicalRecord(anyInt())).thenReturn(medicalRecords.get(0));
 		data = informationService.getAllCompleteProfileOfPersonsByName("John", "Boyd");
 		verify(personDAO, times(1)).getAllPersons();
-		verify(medicalRecordDAO, times(1)).getMedicalRecord(anyInt());
+		verify(medicalRecordDAO, times(8)).getMedicalRecord(anyInt());
 
 		JSONObject result = new JSONObject(data);
 		JSONArray persons = (JSONArray) result.get("persons");
@@ -326,7 +326,7 @@ public class InformationServiceTest {
 		JSONArray medications = (JSONArray) JSONmedicalRecords.get("medications");
 		JSONArray allergies = (JSONArray) JSONmedicalRecords.get("allergies");
 
-		assertThat(persons.length()).isEqualTo(1);
+		assertThat(persons.length()).isEqualTo(8);
 		assertThat((String) person.get("firstName")).isEqualTo("John");
 		assertThat((String) person.get("lastName")).isEqualTo("Boyd");
 		assertThat((String) person.get("address")).isEqualTo("1509 Culver St");

@@ -22,10 +22,10 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 	}
 
 	@Override
-	public String httpPostMedicalRecord(MedicalRecord newMedicalRecord) {
-		if (newMedicalRecord != null) {
-			if (medicalRecordDAO.addNewMedicalRecord(newMedicalRecord)) {
-				LOGGER.info("New medical record for person n°" + newMedicalRecord.getId() + " added");
+	public String httpPostMedicalRecord(MedicalRecord addNewMedicalRecord) {
+		if (addNewMedicalRecord != null) {
+			if (medicalRecordDAO.addNewMedicalRecord(addNewMedicalRecord)) {
+				LOGGER.info("New medical record for person n°" + addNewMedicalRecord.getId() + " added");
 				return "Medical record added";
 			} else {
 				LOGGER.error("Medical record can't be added");

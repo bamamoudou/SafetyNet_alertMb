@@ -18,9 +18,6 @@ public class PersonController {
 	
 	private PersonServiceImpl personService;
 	
-	private String messageStarting = "{\"message\" : \"";
-	
-	private String messageEnding = "\" }";
 
 	public PersonController(PersonServiceImpl personService) {
 		super();
@@ -29,19 +26,19 @@ public class PersonController {
 	
 	@PostMapping("/person")
 	public String post(@RequestBody Person newPerson) {
-		return messageStarting + personService.httpPostPerson(newPerson) + messageEnding;
+		return  personService.httpPostPerson(newPerson);
 	}
 	
 	@PutMapping("/person")
 	public String put(@RequestBody Person person) {
 		
-		return messageStarting + personService.httpPutPerson(person) + messageEnding;
+		return personService.httpPutPerson(person);
 		
 	}
 	
 	@DeleteMapping("/person/{id}")
 	public String delete(@PathVariable Integer id) {
-		return messageStarting + personService.httpDeletePerson(id) + messageEnding;
+		return personService.httpDeletePerson(id);
 	}
 	
 	

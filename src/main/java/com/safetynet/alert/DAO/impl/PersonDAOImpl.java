@@ -39,9 +39,9 @@ public class PersonDAOImpl implements IPersonDAO {
 	public List<Person> getPersonsByName(String firstName, String lastName) {
 		List<Person> listOfPersons = new ArrayList<>();
 
-		for (Person iPerson : allPersons) {
-			if ((iPerson.getFirstName().equals(firstName)) && (iPerson.getLastName().equals(lastName))) {
-				listOfPersons.add(iPerson);
+		for (Person person : allPersons) {
+			if ((person.getFirstName().equals(firstName)) && (person.getLastName().equals(lastName))) {
+				listOfPersons.add(person);
 
 			}
 		}
@@ -51,9 +51,9 @@ public class PersonDAOImpl implements IPersonDAO {
 
 	@Override
 	public Person getPersonsById(Integer id) {
-		for (Person iPerson : allPersons) {
-			if (iPerson.getId().equals(id)) {
-				return iPerson;
+		for (Person person : allPersons) {
+			if (person.getId().equals(id)) {
+				return person;
 			}
 		}
 		return null;

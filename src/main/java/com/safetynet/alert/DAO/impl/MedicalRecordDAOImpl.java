@@ -49,6 +49,7 @@ public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
 		return null;
 
 	}
+	
 
 	@Override
 	public List<MedicalRecord> getAllMedicalRecords() {

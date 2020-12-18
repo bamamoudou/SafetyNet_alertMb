@@ -99,7 +99,7 @@ public class InformationControllerTest {
 	@Test
 	public void getCommunityEmailTest() throws Exception {
 
-		mockMvc.perform(get("/communityEmail")).andExpect(status().is2xxSuccessful()).andReturn();
+		mockMvc.perform(get("/communityEmail").param("city", "Culver")).andExpect(status().is2xxSuccessful()).andReturn();
 	}
 
 }

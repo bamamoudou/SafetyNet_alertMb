@@ -24,11 +24,11 @@ public class FirestationServiceImpl implements IFirestationService {
 	}
 
 	@Override
-	public String httpPostFirestation(Firestation newFirestation) {
-		if (newFirestation != null) {
-			if (firestationDAO.addNewFirestation(newFirestation)) {
-				LOGGER.info("New station mapping added, number : " + newFirestation.getNumberStation() + ", address : "
-						+ newFirestation.getAddress());
+	public String httpPostFirestation(Firestation addNewFirestation) {
+		if (addNewFirestation != null) {
+			if (firestationDAO.addNewFirestation(addNewFirestation)) {
+				LOGGER.info("New station mapping added, number : " + addNewFirestation.getNumberStation() + ", address : "
+						+ addNewFirestation.getAddress());
 				return "Station mapping added";
 			} else {
 				LOGGER.error("Station mapping can't be added");
