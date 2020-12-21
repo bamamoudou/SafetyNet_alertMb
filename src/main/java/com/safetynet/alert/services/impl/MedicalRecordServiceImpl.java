@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.MedicalRecordDAO;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.services.IMedicalRecordService;
 
@@ -14,9 +14,9 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 
 	private static final Logger LOGGER = LogManager.getLogger("MedicalRecordService");
 
-	private MedicalRecordDAOImpl medicalRecordDAO;
+	private MedicalRecordDAO medicalRecordDAO;
 
-	public MedicalRecordServiceImpl(MedicalRecordDAOImpl medicalRecordDAO) {
+	public MedicalRecordServiceImpl(MedicalRecordDAO medicalRecordDAO) {
 		super();
 		this.medicalRecordDAO = medicalRecordDAO;
 	}

@@ -20,19 +20,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.impl.PersonDAOImpl;
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.DAO.PersonDAO;
+import com.safetynet.alert.configuration.DatabaseConfig;
 import com.safetynet.alert.models.Person;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonDAOTest {
 
-	private PersonDAOImpl personDAO;
+	private PersonDAO personDAO;
 
 	private static StringBuilder dataBuilder;
 
 	@Mock
-	private static DatabaseConfigImpl databaseConfigImpl;
+	private static DatabaseConfig databaseConfigImpl;
 
 	@BeforeAll
 	public static void initClassTest() {
@@ -64,7 +64,7 @@ public class PersonDAOTest {
 	public void initTest() throws IOException, ParseException {
 		when(databaseConfigImpl.openConnection())
 				.thenReturn((JSONObject) new JSONParser().parse(dataBuilder.toString()));
-		personDAO = new PersonDAOImpl(databaseConfigImpl);
+		personDAO = new PersonDAO(databaseConfigImpl);
 
 	}
 

@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class DatabaseConfigImpl implements IDatabaseConfig {
+public class DatabaseConfig {
 
 	private static final Logger LOGGER = LogManager.getLogger("DatabaseConfigImpl");
 
 	private JSONObject data;
 
-	public DatabaseConfigImpl() {
+	public DatabaseConfig() {
 
 	}
 
@@ -29,7 +29,6 @@ public class DatabaseConfigImpl implements IDatabaseConfig {
 
 	}
 
-	@Override
 	public JSONObject openConnection(String filepath) {
 		try (FileReader fileData = new FileReader(filepath)) {
 			this.data = (JSONObject) new JSONParser().parse(fileData);
@@ -42,13 +41,11 @@ public class DatabaseConfigImpl implements IDatabaseConfig {
 
 	}
 
-	@Override
 	public JSONObject getData() {
 		return data;
 
 	}
 
-	@Override
 	public void closeConnection() {
 		this.data = null;
 		LOGGER.info("Connection close");

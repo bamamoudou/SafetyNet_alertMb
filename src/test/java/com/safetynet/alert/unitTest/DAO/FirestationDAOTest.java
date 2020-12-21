@@ -18,19 +18,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.DAO.FirestationDAO;
+import com.safetynet.alert.configuration.DatabaseConfig;
 import com.safetynet.alert.models.Firestation;
 
 @ExtendWith(MockitoExtension.class)
 public class FirestationDAOTest {
 
-	private FirestationDAOImpl firestation;
+	private FirestationDAO firestation;
 
 	private static StringBuilder data;
 
 	@Mock
-	private static DatabaseConfigImpl databaseConfig;
+	private static DatabaseConfig databaseConfig;
 
 	@BeforeAll
 	public static void initTestClass() {
@@ -60,7 +60,7 @@ public class FirestationDAOTest {
 	@BeforeEach
 	public void initTest() throws IOException, ParseException {
 		when(databaseConfig.openConnection()).thenReturn((JSONObject) new JSONParser().parse(data.toString()));
-		firestation = new FirestationDAOImpl(databaseConfig);
+		firestation = new FirestationDAO(databaseConfig);
 
 	}
 

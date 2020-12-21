@@ -9,15 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.configuration.DatabaseConfig;
 
 public class DatabaseConfigTest {
 
-	private DatabaseConfigImpl databaseConfig;
+	private DatabaseConfig databaseConfig;
 
 	@BeforeEach
 	void initTests() {
-		databaseConfig = new DatabaseConfigImpl();
+		databaseConfig = new DatabaseConfig();
 	}
 
 	@Tag("DatabaseConfigTest")

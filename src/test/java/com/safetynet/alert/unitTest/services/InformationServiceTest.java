@@ -22,9 +22,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
-import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
-import com.safetynet.alert.DAO.impl.PersonDAOImpl;
+import com.safetynet.alert.DAO.FirestationDAO;
+import com.safetynet.alert.DAO.MedicalRecordDAO;
+import com.safetynet.alert.DAO.PersonDAO;
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.models.Person;
@@ -40,13 +40,13 @@ public class InformationServiceTest {
 	private InformationServiceImpl informationService;
 
 	@Mock
-	private static PersonDAOImpl personDAO;
+	private static PersonDAO personDAO;
 
 	@Mock
-	private static MedicalRecordDAOImpl medicalRecordDAO;
+	private static MedicalRecordDAO medicalRecordDAO;
 
 	@Mock
-	private static FirestationDAOImpl stationDAO;
+	private static FirestationDAO stationDAO;
 
 	@BeforeEach
 	public void initTest() {

@@ -1,4 +1,4 @@
-package com.safetynet.alert.DAO.impl;
+package com.safetynet.alert.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,22 +10,21 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.safetynet.alert.DAO.IMedicalRecordDAO;
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.configuration.DatabaseConfig;
 import com.safetynet.alert.models.MedicalRecord;
 
 @Singleton
-public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
+public class MedicalRecordDAO {
 
 	private static final Logger LOGGER = LogManager.getLogger("MedicalRecordDAOImpl");
 
-	private DatabaseConfigImpl databaseConfig;
+	private DatabaseConfig databaseConfig;
 
-	private PersonDAOImpl personDAO;
+	private PersonDAO personDAO;
 
 	private List<MedicalRecord> allMedicalRecords;
 
-	public MedicalRecordDAOImpl(DatabaseConfigImpl databaseConfig, PersonDAOImpl personDAO) {
+	public MedicalRecordDAO(DatabaseConfig databaseConfig, PersonDAO personDAO) {
 		super();
 		this.databaseConfig = databaseConfig;
 		this.personDAO = personDAO;
@@ -33,13 +32,11 @@ public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
 		loadData();
 	}
 
-	@Override
-	public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig) {
+	public void setDatabaseConfig(DatabaseConfig dataBaseConfig) {
 		this.databaseConfig = dataBaseConfig;
 
 	}
 
-	@Override
 	public MedicalRecord getMedicalRecord(Integer id) {
 		for (MedicalRecord iMedicalRecord : allMedicalRecords) {
 			if (iMedicalRecord.getId().equals(id)) {
@@ -49,15 +46,12 @@ public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
 		return null;
 
 	}
-	
 
-	@Override
 	public List<MedicalRecord> getAllMedicalRecords() {
 		return this.allMedicalRecords;
 
 	}
 
-	@Override
 	public boolean addNewMedicalRecord(MedicalRecord medicalRecord) {
 		boolean medicalRecordAdded = false;
 
@@ -77,7 +71,6 @@ public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
 
 	}
 
-	@Override
 	public boolean updateMedicalRecord(MedicalRecord medicalRecord) {
 		boolean medicalRecordUpdated = false;
 
@@ -101,7 +94,6 @@ public class MedicalRecordDAOImpl implements IMedicalRecordDAO {
 
 	}
 
-	@Override
 	public boolean deleteMedicalRecord(Integer id) {
 		boolean medicalRecordDeleted = false;
 

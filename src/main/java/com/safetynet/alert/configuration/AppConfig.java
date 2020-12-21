@@ -3,9 +3,9 @@ package com.safetynet.alert.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
-import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
-import com.safetynet.alert.DAO.impl.PersonDAOImpl;
+import com.safetynet.alert.DAO.FirestationDAO;
+import com.safetynet.alert.DAO.MedicalRecordDAO;
+import com.safetynet.alert.DAO.PersonDAO;
 import com.safetynet.alert.services.impl.FirestationServiceImpl;
 import com.safetynet.alert.services.impl.InformationServiceImpl;
 import com.safetynet.alert.services.impl.MedicalRecordServiceImpl;
@@ -14,21 +14,21 @@ import com.safetynet.alert.services.impl.PersonServiceImpl;
 @Configuration
 public class AppConfig {
 
-	private DatabaseConfigImpl databaseConfig = new DatabaseConfigImpl();
+	private DatabaseConfig databaseConfig = new DatabaseConfig();
 
 	@Bean
-	public PersonDAOImpl personDAO() {
-		return new PersonDAOImpl(databaseConfig);
+	public PersonDAO personDAO() {
+		return new PersonDAO(databaseConfig);
 	}
 
 	@Bean
-	public FirestationDAOImpl stationDAO() {
-		return new FirestationDAOImpl(databaseConfig);
+	public FirestationDAO stationDAO() {
+		return new FirestationDAO(databaseConfig);
 	}
 
 	@Bean
-	public MedicalRecordDAOImpl medicalRecordDAO() {
-		return new MedicalRecordDAOImpl(databaseConfig, personDAO());
+	public MedicalRecordDAO medicalRecordDAO() {
+		return new MedicalRecordDAO(databaseConfig, personDAO());
 	}
 
 	@Bean

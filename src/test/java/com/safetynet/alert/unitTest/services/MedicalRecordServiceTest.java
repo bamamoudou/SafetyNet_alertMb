@@ -18,7 +18,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
+import com.safetynet.alert.DAO.MedicalRecordDAO;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.services.impl.MedicalRecordServiceImpl;
 
@@ -29,7 +29,7 @@ public class MedicalRecordServiceTest {
 	private MedicalRecordServiceImpl medicalRecordsService;
 
 	@Mock
-	private static MedicalRecordDAOImpl medicalRecordDAO;
+	private static MedicalRecordDAO medicalRecordDAO;
 
 	@BeforeEach
 	void setUp() {

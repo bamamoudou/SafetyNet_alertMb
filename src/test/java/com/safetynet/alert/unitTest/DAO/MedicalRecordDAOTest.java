@@ -19,22 +19,22 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.safetynet.alert.DAO.impl.MedicalRecordDAOImpl;
-import com.safetynet.alert.DAO.impl.PersonDAOImpl;
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.DAO.MedicalRecordDAO;
+import com.safetynet.alert.DAO.PersonDAO;
+import com.safetynet.alert.configuration.DatabaseConfig;
 import com.safetynet.alert.models.MedicalRecord;
 import com.safetynet.alert.models.Person;
 
 @ExtendWith(MockitoExtension.class)
 public class MedicalRecordDAOTest {
 
-	private MedicalRecordDAOImpl medicalRecordDAO;
+	private MedicalRecordDAO medicalRecordDAO;
 
-	private static PersonDAOImpl personDAO;
+	private static PersonDAO personDAO;
 	private static StringBuilder data;
 
 	@Mock
-	private static DatabaseConfigImpl databaseConfig;
+	private static DatabaseConfig databaseConfig;
 
 	@BeforeAll
 	public static void initClassTest() {
@@ -64,8 +64,8 @@ public class MedicalRecordDAOTest {
 	@BeforeEach
 	public void initTest() throws IOException, ParseException {
 		when(databaseConfig.openConnection()).thenReturn((JSONObject) new JSONParser().parse(data.toString()));
-		personDAO = new PersonDAOImpl(databaseConfig);
-		medicalRecordDAO = new MedicalRecordDAOImpl(databaseConfig, personDAO);
+		personDAO = new PersonDAO(databaseConfig);
+		medicalRecordDAO = new MedicalRecordDAO(databaseConfig, personDAO);
 	}
 
 	@Tag("MedicalRecordTest")

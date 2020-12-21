@@ -3,7 +3,7 @@ package com.safetynet.alert.services.impl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alert.DAO.impl.FirestationDAOImpl;
+import com.safetynet.alert.DAO.FirestationDAO;
 import com.safetynet.alert.models.Firestation;
 import com.safetynet.alert.services.IFirestationService;
 
@@ -11,9 +11,9 @@ public class FirestationServiceImpl implements IFirestationService {
 
 	private static final Logger LOGGER = LogManager.getLogger("FirestationService");
 
-	private FirestationDAOImpl firestationDAO;
+	private FirestationDAO firestationDAO;
 
-	public FirestationServiceImpl(FirestationDAOImpl firestationDAO) {
+	public FirestationServiceImpl(FirestationDAO firestationDAO) {
 		super();
 		this.firestationDAO = firestationDAO;
 	}

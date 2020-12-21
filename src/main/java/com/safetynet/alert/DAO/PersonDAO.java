@@ -1,4 +1,4 @@
-package com.safetynet.alert.DAO.impl;
+package com.safetynet.alert.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,32 +10,29 @@ import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.safetynet.alert.DAO.IPersonDAO;
-import com.safetynet.alert.configuration.DatabaseConfigImpl;
+import com.safetynet.alert.configuration.DatabaseConfig;
 import com.safetynet.alert.models.Person;
 
 @Singleton
-public class PersonDAOImpl implements IPersonDAO {
+public class PersonDAO {
 	private static final Logger LOGGER = LogManager.getLogger("PersonDAOImpl");
 
-	private DatabaseConfigImpl databaseConfig;
+	private DatabaseConfig databaseConfig;
 
 	private List<Person> allPersons;
 
-	public PersonDAOImpl(DatabaseConfigImpl databaseConfig) {
+	public PersonDAO(DatabaseConfig databaseConfig) {
 		super();
 		this.databaseConfig = databaseConfig;
 		this.allPersons = new ArrayList<Person>();
 		loadData();
 	}
 
-	@Override
-	public void setDatabaseConfig(DatabaseConfigImpl dataBaseConfig) {
+	public void setDatabaseConfig(DatabaseConfig dataBaseConfig) {
 		this.databaseConfig = dataBaseConfig;
 
 	}
 
-	@Override
 	public List<Person> getPersonsByName(String firstName, String lastName) {
 		List<Person> listOfPersons = new ArrayList<>();
 
@@ -49,7 +46,6 @@ public class PersonDAOImpl implements IPersonDAO {
 
 	}
 
-	@Override
 	public Person getPersonsById(Integer id) {
 		for (Person person : allPersons) {
 			if (person.getId().equals(id)) {
@@ -60,13 +56,11 @@ public class PersonDAOImpl implements IPersonDAO {
 
 	}
 
-	@Override
 	public List<Person> getAllPersons() {
 		return this.allPersons;
 
 	}
 
-	@Override
 	public boolean addNewPerson(Person person) {
 		boolean personPosted = false;
 
@@ -87,7 +81,6 @@ public class PersonDAOImpl implements IPersonDAO {
 
 	}
 
-	@Override
 	public boolean updatePerson(Person person) {
 		boolean personUpdated = false;
 
@@ -114,7 +107,6 @@ public class PersonDAOImpl implements IPersonDAO {
 
 	}
 
-	@Override
 	public boolean deletePerson(Integer id) {
 		boolean personDeleted = false;
 
