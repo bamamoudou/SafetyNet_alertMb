@@ -25,19 +25,19 @@ public class PersonController {
 	}
 	
 	@PostMapping("/person")
-	public String post(@RequestBody Person newPerson) {
+	public String addPerson(@RequestBody Person newPerson) {
 		return  personService.httpPostPerson(newPerson);
 	}
 	
 	@PutMapping("/person")
-	public String put(@RequestBody Person person) {
+	public String updatePerson(@RequestBody Person person) {
 		
 		return personService.httpPutPerson(person);
 		
 	}
 	
 	@DeleteMapping("/person/{id}")
-	public String delete(@PathVariable Integer id) {
+	public String deletePerson(@PathVariable Integer id) {
 		return personService.httpDeletePerson(id);
 	}
 	

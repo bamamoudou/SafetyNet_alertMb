@@ -42,7 +42,7 @@ public class InformationController {
 	}
 
 	@GetMapping("/firestations")
-	public String get() {
+	public String getAllFirestation() {
 		return informationService.getAllFirestations();
 
 	}

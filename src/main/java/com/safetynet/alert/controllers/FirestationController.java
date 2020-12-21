@@ -24,13 +24,13 @@ public class FirestationController {
 	}
 
 	@PostMapping("/firestation")
-	public String post(@RequestBody Firestation newFirestation) {
+	public String addNewFirestation(@RequestBody Firestation newFirestation) {
 		return firestationService.httpPostFirestation(newFirestation);
 
 	}
 
 	@PutMapping("/firestation")
-	public String put(@RequestBody Firestation firestation) {
+	public String updateFirestation(@RequestBody Firestation firestation) {
 		return firestationService.httpPutFirestation(firestation);
 
 	}
